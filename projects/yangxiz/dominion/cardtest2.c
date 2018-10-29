@@ -1,0 +1,55 @@
+#include "dominion.h"
+#include "dominion_helpers.h"
+#include <string.h>
+#include <stdio.h>
+#include <assert.h>
+#include "rngs.h"
+
+#define TESTCARD "adventurer"
+
+int main(){
+    
+	int seed = 1000;
+	int numPlayers = 2;
+	int player = 0;
+	int player2 = 0;
+	int bonus = 0;
+	int newCards = 0;
+    int discardedCards = 1;
+    int extraCoins = 0;
+    int shuffledCards = 0;
+	int choice_1 = 0;
+    int choice_2 = 0;
+    int choice_3 = 0;
+	int handPos = 0;
+    int bonus = 0;
+	int k[10] = {adventurer, council_room, feast, gardens, mine, 
+	remodel, smithy, village, baron, great_hall};
+	struct gameState G;
+	
+	initializeGame(numPlayers, k, seed, &G);
+	
+	printf("TESTING Adventurer:\n");
+	printf("check if the result is right\n");
+	memcpy(&G2, & G, sizeof(struct gameState));
+    cardEffect( adventurer, choice_1, choice_2, choice_3, &G2, 
+	handPos, &bonus);
+    extraCoins = 0;
+    int handCount = G2.handCount[player];
+    int treasureSum = 0;
+    int cardDrawn = 0;
+    for (int i=0; i < handCount; i++){
+		cardDrawn = G2.hand[plyer][i];
+		if(cardDrawn == copper){
+			cardDrawn += 1;
+		}else if(cardDrawn == sliver){
+			cardDrawn += 1;
+		}else if(cardDrawn == gold){
+			cardDrawn += 1;
+		}
+	}
+  return 0;
+}	
+	
+	
+	

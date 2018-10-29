@@ -13,7 +13,7 @@ int main(){
 	int choice_1 = 0;
     int choice_2 = 0;
     int choice_3 = 0;
-	int hand = 0;
+	int handPos = 0;
 	int k[10] = {adventurer, council_room, feast, gardens, mine, 
 	remodel, smithy, village, baron, great_hall};
 	struct gameState G;
@@ -29,8 +29,8 @@ int main(){
     G.numActions = 10;
 	printf("**************************************************\n");
 	printf("2.Testing 0 card\n");
-    G.hand[0][hand_pos] = gold;
-    returnVal = playCard(hand,choice_1,choice_2,choice_3, &G);
+    G.hand[0][handPos] = gold;
+    returnVal = playCard(handPos,choice_1,choice_2,choice_3, &G);
     printf("expected: -1, actual: %d\n",return_val);
     assert(returnVal == -1);
 	
