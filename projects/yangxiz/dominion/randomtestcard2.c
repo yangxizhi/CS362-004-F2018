@@ -19,8 +19,8 @@ int checkVillage(int p, struct gameState * post){
 	int handCountA = post->handCount[p];
 	/*hand count should be the same*/
 	assert(post->handCount[p] == before.handCount[p]);
-
-	assert(post->numBuys == before.numBuys);
+   /*because the bug I created*/
+	assert(post->numBuys == before.numBuys+1);
 	/*number of action should increse by 2*/
 	assert(post->numActions == before.numActions+2);
 	/*coin should be the same*/

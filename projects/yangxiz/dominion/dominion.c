@@ -649,6 +649,7 @@ void adventurer_card(struct gameState * state, int currentPlayer, int * z, int *
       shuffle(currentPlayer, state);
     }
     drawCard(currentPlayer, state);
+	drawCard(currentPlayer, state); //bug draw one more
     *cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];
     if (*cardDrawn == copper || *cardDrawn == silver || *cardDrawn == gold)
     *drawntreasure++;
@@ -665,8 +666,8 @@ void adventurer_card(struct gameState * state, int currentPlayer, int * z, int *
 }
 
 void smithy_card(struct gameState * state, int currentPlayer, int handPos){
-//+3 Cards
-  for (int i = 0; i < 3; i++)
+//+4 Cards bug
+  for (int i = 0; i < 4; i++)
   {
     drawCard(currentPlayer, state);
   }
@@ -680,8 +681,8 @@ void council_room_card(struct gameState * state, int currentPlayer, int handPos)
 	  drawCard(currentPlayer, state);
 	}
 			
-      //+1 Buy
-      state->numBuys++;
+      //bug buy number -1
+      state->numBuys--;
 			
       //Each other player draws a card
       for (i = 0; i < state->numPlayers; i++)
@@ -702,6 +703,8 @@ void village_card(struct gameState * state, int currentPlayer, int handPos){
   // this line increased numbers of buys should not happen
   //+2 Actions
   state->numActions = state->numActions + 2;
+  //bug add number of buys
+  state->numBuys++;
   //discard played card from hand
   discardCard(handPos, currentPlayer, state, 0);	
 }
