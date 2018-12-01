@@ -648,7 +648,7 @@ int bug_smithy(int currentPlayer, struct gameState *state, int handPos)
 {
 	//+3 Cards
   int i;
-      for (i = 0; i < 2; i++)
+      for (i = 0; i < 3; i++)
 	{
         //printf("i is %i\n", i);
 	  drawCard(currentPlayer, state);
@@ -670,7 +670,7 @@ int bug_adventurer(int drawntreasure, struct gameState *state, int currentPlayer
 	}
 	drawCard(currentPlayer, state);
 	cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
-	if (cardDrawn == copper || cardDrawn == gold)
+	if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
 	  drawntreasure++;
 	else{
 	  temphand[z]=cardDrawn;
@@ -702,7 +702,6 @@ int bug_council_room(int currentPlayer, struct gameState *state, int handPos)
 	{
 	  if ( i != currentPlayer )
 	    {
-	      drawCard(i, state);
 	      drawCard(i, state);
 	    }
 	}
@@ -761,7 +760,7 @@ int bug_village(int currentPlayer, struct gameState *state)
       state->numActions = state->numActions + 2;
 			
       //discard played card from hand
-      //discardCard(handPos, currentPlayer, state, 0);
+      discardCard(handPos, currentPlayer, state, 0);
       return 0;	
 };
 
